@@ -116,13 +116,6 @@
             android:summary="@string/power_end_call_summary"
             android:persistent="false"/>
 
-        <lineageos.preference.LineageSystemSettingSwitchPreference
-            android:key="torch_long_press_power_gesture"
-            android:title="@string/torch_long_press_power_gesture_title"
-            android:summary="@string/torch_long_press_power_gesture_desc"
-            android:defaultValue="false"
-            lineage:requiresConfig="@*android:bool/config_supportLongPressPowerWhenNonInteractive" />
-
         <ListPreference
             android:key="torch_long_press_power_timeout"
             android:dialogTitle="@string/torch_long_press_power_timeout_title"
@@ -331,26 +324,6 @@
             android:key="volume_panel_on_left"
             android:title="@string/volume_panel_on_left_title"
             android:summary="@string/volume_panel_on_left_summary" />
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        android:key="extras_category"
-        android:title="@string/extras_title" >
-
-        <lineageos.preference.RemotePreference
-            android:key="additional_buttons"
-            android:title="@string/additional_buttons_title"
-            lineage:requiresAction="org.lineageos.settings.device.ADDITIONAL_BUTTONS_SETTINGS">
-            <intent
-                android:action="org.lineageos.settings.device.ADDITIONAL_BUTTONS_SETTINGS" />
-        </lineageos.preference.RemotePreference>
-
-        <lineageos.preference.LineageSystemSettingSwitchPreference
-            android:key="click_partial_screenshot"
-            android:title="@string/click_partial_screenshot_title"
-            android:summary="@string/click_partial_screenshot_summary"
-            android:defaultValue="false" />
-
     </PreferenceCategory>
 
 </PreferenceScreen>
