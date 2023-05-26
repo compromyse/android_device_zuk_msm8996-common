@@ -3,4 +3,6 @@ allow thermal-engine sysfs_batteryinfo:file write;
 allow thermal-engine { sysfs_batteryinfo sysfs_usb_supply }:dir search;
 
 # Allow thermal-engine to read files in /sys
-r_dir_file(thermal-engine, sysfs)
+r_dir_file(thermal-engine, sysfs);
+
+get_prop(thermal-engine, vendor_thermal_prop);
