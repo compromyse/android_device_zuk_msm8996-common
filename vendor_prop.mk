@@ -46,6 +46,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.btconfig.vendor=qcom \
     ro.btconfig.chip=QCA6164 \
 		ro.btconfig.dev=/dev/ttyHS0 \
+		bluetooth.hardware.power.operating_voltage_mv=3300 \
 		bluetooth.le.disable_apcf_extended_features=1 \
 		bluetooth.profile.a2dp.source.enabled=true \
 		bluetooth.profile.asha.central.enabled=true \
