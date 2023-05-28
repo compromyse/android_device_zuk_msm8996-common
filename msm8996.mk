@@ -108,6 +108,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.audio@6.0-impl:32 \
     android.hardware.audio.effect@6.0-impl:32 \
+		android.hardware.bluetooth.audio-impl \
+		audio.bluetooth.default \
     android.hardware.audio.service \
     audio.primary.msm8996 \
     audio.r_submix.default \
