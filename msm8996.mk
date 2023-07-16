@@ -1,6 +1,6 @@
 #
 # Copyright (C) 2016 The CyanogenMod Project
-# Copyright (C) 2017-2020 The LineageOS Project
+# Copyright (C) 2017-2022 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,6 +21,10 @@
 # included in a build is to use PRODUCT_PACKAGES in a product
 # definition file).
 #
+
+# Inherit from those products. Most specific first.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_m.mk)
 
 # Get non-open-source specific aspects
@@ -36,8 +40,7 @@ DEVICE_PACKAGE_OVERLAYS += \
 
 PRODUCT_ENFORCE_RRO_TARGETS := *
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
-    $(LOCAL_PATH)/overlay-lineage/packages/apps/LineageParts \
-    $(LOCAL_PATH)/overlay/packages/apps/CarrierConfig
+    $(LOCAL_PATH)/overlay-lineage/packages/apps/LineageParts
 
 # Screen density
 PRODUCT_AAPT_CONFIG := normal
@@ -158,10 +161,6 @@ PRODUCT_PACKAGES += \
     init.recovery.qcom.rc \
     init.wlan.sh \
     ueventd.qcom.rc
-
-# Component overrides
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/component-overrides.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sysconfig/component-overrides.xml
 
 # ConfigPanel
 PRODUCT_PACKAGES += \
