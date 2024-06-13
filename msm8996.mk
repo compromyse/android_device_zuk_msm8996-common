@@ -146,7 +146,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl:32 \
     android.hardware.camera.provider@2.4-service \
-    camera.msm8996
+    camera.msm8996 \
+    libion.vendor
 
 # Common init scripts
 PRODUCT_PACKAGES += \
@@ -243,6 +244,7 @@ PRODUCT_PACKAGES += \
     android.hidl.memory@1.0.vendor \
     libhidlbase-v32 \
     libhidlbase-v32.vendor \
+    libhidlmemory.vendor \
     libhidltransport \
     libhwbinder \
     libhidltransport.vendor \
@@ -347,7 +349,9 @@ PRODUCT_PACKAGES += \
     android.hardware.radio@1.4.vendor \
     android.hardware.radio.config@1.0 \
     android.hardware.radio.config@1.0.vendor \
-    librmnetctl
+    librmnetctl \
+    libnetutils.vendor \
+    libsqlite.vendor
 
 # Seccomp policy
 PRODUCT_COPY_FILES += \
