@@ -23,6 +23,9 @@
 #
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_m.mk)
 
+# Add common definitions for Qualcomm
+$(call inherit-product, hardware/qcom-caf/common/common.mk)
+
 # Get non-open-source specific aspects
 $(call inherit-product, vendor/zuk/msm8996-common/msm8996-common-vendor.mk)
 
