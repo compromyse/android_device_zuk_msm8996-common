@@ -13,6 +13,15 @@ value:2904
 [AID_VENDOR_ADPL_ODL]
 value:2905
 
+[AID_VENDOR_QRTR]
+value:2906
+
+[vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti]
+mode: 0755
+user: AID_BLUETOOTH
+group: AID_BLUETOOTH
+caps: BLOCK_SUSPEND NET_ADMIN
+
 [vendor/bin/pm-service]
 mode: 0755
 user: AID_SYSTEM
@@ -87,7 +96,7 @@ caps: 0
 
 [vendor/firmware_mnt/image/*]
 mode: 0771
-user: AID_ROOT
+user: AID_SYSTEM
 group: AID_SYSTEM
 caps: 0
 
@@ -97,7 +106,7 @@ user: AID_SYSTEM
 group: AID_SYSTEM
 caps: 0
 
-[mnt/vendor/persist/]
+[persist/]
 mode: 0771
 user: AID_SYSTEM
 group: AID_SYSTEM

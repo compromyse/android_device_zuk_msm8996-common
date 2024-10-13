@@ -85,7 +85,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.data.mode=concurrent \
     persist.radio.aosp_usr_pref_sel=true \
     persist.data.netmgrd.qos.enable=true \
-    ro.vendor.use_data_netmgrd=true
+    ro.vendor.use_data_netmgrd=true \
+    persist.vendor.data.mode=concurrent
 
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -102,6 +103,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Graphics
 PRODUCT_PROPERTY_OVERRIDES += \
+    ro.hardware.egl=adreno \
     debug.egl.hw=1 \
     debug.renderengine.backend=skiaglthreaded \
     debug.sf.hw=1 \
@@ -135,9 +137,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     DEVICE_PROVISIONED=1 \
     rild.libpath=/vendor/lib64/libril-qc-qmi-1.so \
-    vendor.rild.libpath=/vendor/lib64/libril-qc-qmi-1.so \
     ril.subscription.types=NV,RUIM \
     ro.telephony.default_network=10 \
+    persist.vendor.radio.apm_sim_not_pwdn=1 \
     telephony.lteOnCdmaDevice=1 \
     android.telephony.apn-restore=24000 \
     persist.vendor.qti.telephony.vt_cam_interface=1 \

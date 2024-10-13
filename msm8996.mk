@@ -23,6 +23,9 @@
 #
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_m.mk)
 
+# Add common definitions for Qualcomm
+$(call inherit-product, hardware/qcom-caf/common/common.mk)
+
 # Get non-open-source specific aspects
 $(call inherit-product, vendor/zuk/msm8996-common/msm8996-common-vendor.mk)
 
@@ -138,9 +141,12 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
+    android.hardware.camera.device@3.4:64 \
     android.hardware.camera.provider@2.4-impl:32 \
     android.hardware.camera.provider@2.4-service \
-    camera.msm8996
+    android.hardware.camera.provider@2.5:64 \
+    camera.msm8996 \
+    libion.vendor
 
 # Common init scripts
 PRODUCT_PACKAGES += \
@@ -155,8 +161,8 @@ PRODUCT_PACKAGES += \
     ueventd.qcom.rc
 
 # ConfigPanel
-PRODUCT_PACKAGES += \
-    ConfigPanel
+#PRODUCT_PACKAGES += \
+#    ConfigPanel
 
 # Display
 PRODUCT_PACKAGES += \
@@ -178,8 +184,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/calib.cfg:$(TARGET_COPY_OUT_VENDOR)/etc/calib.cfg
 
 # Doze mode
-PRODUCT_PACKAGES += \
-    ZukDoze
+#PRODUCT_PACKAGES += \
+#    ZukDoze
 
 # DPM
 PRODUCT_PACKAGES += \
@@ -187,8 +193,7 @@ PRODUCT_PACKAGES += \
 
 # DRM
 PRODUCT_PACKAGES += \
-    android.hardware.drm@1.2.vendor \
-    android.hardware.drm@1.4-service.clearkey
+    android.hardware.drm@1.2.vendor
 
 # fwk-detect
 PRODUCT_PACKAGES += \
@@ -231,6 +236,7 @@ PRODUCT_PACKAGES += \
     android.hidl.manager@1.0 \
     android.hidl.manager@1.0.vendor \
     android.hidl.memory@1.0.vendor \
+    libhidlmemory.vendor \
     libhidltransport \
     libhwbinder \
     libhidltransport.vendor \
@@ -264,8 +270,8 @@ PRODUCT_PACKAGES += \
     android.hardware.keymaster@3.0-service
 
 # Lights
-PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-service.zuk_8996
+#PRODUCT_PACKAGES += \
+#    android.hardware.light-service.zuk
 
 # LiveDisplay
 PRODUCT_PACKAGES += \
@@ -316,8 +322,8 @@ PRODUCT_COPY_FILES += \
 
 # Protobuf
 PRODUCT_PACKAGES += \
-    libprotobuf-cpp-full-vendorcompat \
-    libprotobuf-cpp-lite-vendorcompat
+		libprotobuf-cpp-full-vendorcompat \
+		libprotobuf-cpp-lite-vendorcompat
 
 # QCOM
 PRODUCT_COPY_FILES += \
@@ -333,9 +339,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.radio@1.4 \
     android.hardware.radio@1.4.vendor \
-    android.hardware.radio.config@1.0 \
-    android.hardware.radio.config@1.0.vendor \
-    librmnetctl
+    android.hardware.radio.config@1.2 \
+    android.hardware.radio.deprecated@1.0.vendor \
+    android.hardware.secure_element@1.0.vendor \
+    librmnetctl \
+    libnetutils.vendor \
+    libsqlite.vendor
 
 # Seccomp policy
 PRODUCT_COPY_FILES += \
@@ -343,8 +352,10 @@ PRODUCT_COPY_FILES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
+		android.frameworks.sensorservice@1.0.vendor \
     android.hardware.sensors@1.0-impl:64 \
-    android.hardware.sensors@1.0-service
+    android.hardware.sensors@1.0-service \
+		libpower.vendor
 
 # Telephony
 PRODUCT_PACKAGES += \
@@ -367,32 +378,38 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     vendor.lineage.touch@1.0-service.zuk_8996
 
-# Trust HAL
-PRODUCT_PACKAGES += \
-    vendor.lineage.trust@1.0-service
-
 # USB
 PRODUCT_PACKAGES += \
-    android.hardware.usb@1.0-service
+    android.hardware.usb@1.3-service.basic
 
 # Verity
-PRODUCT_SYSTEM_VERITY_PARTITION=/dev/block/bootdevice/by-name/system
-PRODUCT_VENDOR_VERITY_PARTITION=/dev/block/bootdevice/by-name/factory
-$(call inherit-product, build/target/product/verity.mk)
+# PRODUCT_SYSTEM_VERITY_PARTITION=/dev/block/bootdevice/by-name/system
+# PRODUCT_VENDOR_VERITY_PARTITION=/dev/block/bootdevice/by-name/factory
+# $(call inherit-product, build/target/product/verity.mk)
 
 # Vibrator
 PRODUCT_PACKAGES += \
-    android.hardware.vibrator@1.0-impl:64 \
-    android.hardware.vibrator@1.0-service
+    vendor.qti.hardware.vibrator.service
+
+PRODUCT_COPY_FILES += \
+    prebuilts/vndk/v29/arm64/arch-arm64-armv8-a/shared/vndk-sp/libcutils.so:$(TARGET_COPY_OUT_SYSTEM_EXT)/lib64/libcutils-v29.so \
+    prebuilts/vndk/v32/arm64/arch-arm64-armv8-a/shared/vndk-sp/libhidlbase.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libhidlbase-v32.so \
+    prebuilts/vndk/v32/arm64/arch-arm64-armv8-a/shared/vndk-sp/libhidlbase.so:$(TARGET_COPY_OUT_SYSTEM_EXT)/lib64/libhidlbase-v32.so \
+    prebuilts/vndk/v32/arm64/arch-arm64-armv8-a/shared/vndk-sp/libhidlbase.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libhidlbase-v32.so \
+    prebuilts/vndk/v33/arm64/arch-arm64-armv8-a/shared/vndk-sp/libutils.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libutils-v33.so
 
 # WiFi
 PRODUCT_PACKAGES += \
-    android.hardware.wifi@1.0-service \
+    android.hardware.wifi-service \
     libwpa_client \
     hostapd \
     WifiOverlay \
     wpa_supplicant \
     wpa_supplicant.conf
+
+# Configstore
+PRODUCT_PACKAGES += \
+    disable_configstore
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf \
