@@ -146,7 +146,8 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-service \
     android.hardware.camera.provider@2.5:64 \
     camera.msm8996 \
-    libion.vendor
+    libion.vendor \
+		libgui_vendor
 
 # Common init scripts
 PRODUCT_PACKAGES += \
@@ -190,6 +191,11 @@ PRODUCT_COPY_FILES += \
 # DPM
 PRODUCT_PACKAGES += \
     libcutils_shim
+
+# Shims
+PRODUCT_PACKAGES += \
+    libbase_shim \
+		libhidlbase_shim
 
 # DRM
 PRODUCT_PACKAGES += \
