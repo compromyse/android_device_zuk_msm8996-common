@@ -32,6 +32,8 @@ $(call inherit-product, vendor/zuk/msm8996-common/msm8996-common-vendor.mk)
 # Setup dalvik vm configs
 $(call inherit-product, frameworks/native/build/phone-xhdpi-4096-dalvik-heap.mk)
 
+PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := true
+
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
@@ -147,7 +149,8 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.5:64 \
     camera.msm8996 \
     libion.vendor \
-		libgui_vendor
+		libgui_vendor \
+		libstdc++_vendor
 
 # Common init scripts
 PRODUCT_PACKAGES += \
