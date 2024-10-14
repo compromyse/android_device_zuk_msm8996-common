@@ -138,6 +138,7 @@ PRODUCT_COPY_FILES += \
 # Bluetooth
 PRODUCT_PACKAGES += \
     android.hardware.bluetooth@1.0.vendor \
+    android.hardware.bluetooth@1.0 \
     android.hardware.bluetooth.audio-impl \
     audio.bluetooth.default
 
@@ -215,13 +216,14 @@ PRODUCT_PACKAGES += \
 
 # GPS / Location
 PRODUCT_PACKAGES += \
-    android.hardware.gnss@1.0-impl-qti \
-    android.hardware.gnss@1.0-service-qti \
+    android.hardware.gnss@2.0-impl-qti \
+    android.hardware.gnss@2.0-service-qti \
     android.hardware.gnss@1.1.vendor \
     libcurl \
     libgnss \
     libgnsspps \
-    libsensorndkbridge
+    libsensorndkbridge \
+		libwifi-hal-ctrl
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/gps//flp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/flp.conf \
@@ -396,10 +398,6 @@ PRODUCT_PACKAGES += \
 # PRODUCT_VENDOR_VERITY_PARTITION=/dev/block/bootdevice/by-name/factory
 # $(call inherit-product, build/target/product/verity.mk)
 
-# Vibrator
-PRODUCT_PACKAGES += \
-    vendor.qti.hardware.vibrator.service
-
 PRODUCT_COPY_FILES += \
     prebuilts/vndk/v29/arm64/arch-arm64-armv8-a/shared/vndk-sp/libcutils.so:$(TARGET_COPY_OUT_SYSTEM_EXT)/lib64/libcutils-v29.so \
     prebuilts/vndk/v32/arm64/arch-arm64-armv8-a/shared/vndk-sp/libhidlbase.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libhidlbase-v32.so \
@@ -409,7 +407,7 @@ PRODUCT_COPY_FILES += \
 
 # WiFi
 PRODUCT_PACKAGES += \
-    android.hardware.wifi-service \
+    android.hardware.wifi@1.0-service.legacy \
     libwpa_client \
     hostapd \
     WifiOverlay \
