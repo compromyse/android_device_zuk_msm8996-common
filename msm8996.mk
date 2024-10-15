@@ -121,7 +121,8 @@ PRODUCT_PACKAGES += \
     libqcompostprocbundle \
     libqcomvisualizer \
     libqcomvoiceprocessing \
-    libvolumelistener
+    libvolumelistener \
+		libldacBT_bco
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
@@ -224,6 +225,8 @@ PRODUCT_PACKAGES += \
     libgnss \
     libgnsspps \
     libsensorndkbridge \
+		libgeofencing \
+		libbatching \
 		libwifi-hal-ctrl
 
 PRODUCT_COPY_FILES += \
@@ -407,7 +410,7 @@ PRODUCT_COPY_FILES += \
 
 # WiFi
 PRODUCT_PACKAGES += \
-    android.hardware.wifi@1.0-service.legacy \
+    android.hardware.wifi-service \
     libwpa_client \
     hostapd \
     WifiOverlay \
