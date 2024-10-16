@@ -643,7 +643,6 @@ vendor/lib/libmdmdetect.so
 vendor/radio/qcril_database/qcril.db
 
 # RIL - from daisy - 9/PKQ1.180917.001/V10.0.7.0.PDLMIXM
-framework/qti-telephony-common.jar:system_ext/framework/qti-telephony-common.jar|af9952a5be5017848eb8b59c62c4ea318e9472f5
 vendor/bin/rmt_storage|346ef281e829109ba11af912509309e520351ef9
 vendor/bin/tftp_server|05a9c0e0e691e534e703bded4a99083d25a26ebb
 vendor/lib64/libqrtr.so|83676274fde1056a0507b4100a3a5423f5af5021
