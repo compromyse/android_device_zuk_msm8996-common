@@ -144,6 +144,8 @@ function blob_fixup() {
         "${PATCHELF}" --set-soname "vulkan.msm8996.so" "${2}"
         ;;
     esac
+
+    grep "libhidlbase.so" "${1}" && "${PATCHELF}" --replace-needed "libhidlbase.so" "libhidlbase-v32.so" "${1}"
 }
 
 if [ -z "${ONLY_TARGET}" ]; then
