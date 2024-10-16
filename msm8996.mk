@@ -164,6 +164,10 @@ PRODUCT_PACKAGES += \
     init.wlan.sh \
     ueventd.qcom.rc
 
+# Configstore
+PRODUCT_PACKAGES += \
+    disable_configstore
+
 # ConfigPanel
 PRODUCT_PACKAGES += \
     ConfigPanel
