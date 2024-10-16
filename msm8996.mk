@@ -184,7 +184,8 @@ PRODUCT_PACKAGES += \
 
 # DPM
 PRODUCT_PACKAGES += \
-    libcutils_shim
+    libcutils_shim \
+    libutils_shim
 
 # DRM
 PRODUCT_PACKAGES += \

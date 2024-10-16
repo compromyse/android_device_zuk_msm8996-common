@@ -97,6 +97,10 @@ function blob_fixup() {
         sed -i "s|/firmware/image|/vendor/f/image|g" "${2}"
         ;;
 
+    vendor/bin/pm-service)
+        "${PATCHELF}" --add-needed "libutils_shim.so" "${2}"
+        ;;
+
     # Hex edit libaudcal.so to store acdbdata in new paths
     vendor/lib/libaudcal.so | vendor/lib64/libaudcal.so)
         sed -i "s|/data/vendor/misc/audio/acdbdata/delta/|/data/vendor/audio/acdbdata/delta/\x00\x00\x00\x00\x00|g" "${2}"
