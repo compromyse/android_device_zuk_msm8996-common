@@ -114,11 +114,6 @@ function blob_fixup() {
         sed -i "s|/data/vendor/camera/cam_socket%d|/data/vendor/qcam/camer_socket%d|g" "${2}"
         ;;
 
-	# Remove libmedia.so dependency from lib-dplmedia.so
-    vendor/lib64/lib-dplmedia.so)
-        "${PATCHELF}" --remove-needed libmedia.so "${2}"
-        ;;
-
     vendor/etc/permissions/qti_libpermissions.xml)
         sed -i 's|"android.hidl.manager-V1.0-java"|"android.hidl.manager@1.0-java"|' ${2}
         ;;
@@ -132,7 +127,7 @@ function blob_fixup() {
         ;;
 
     system_ext/etc/permissions/qcrilhook.xml)
-        sed -i "s/\/system\/framework\//\/system\/system_ext\/framework\//g" "${2}"
+        sed -i "s/\/product\/framework\//\/system\/system_ext\/framework\//g" "${2}"
         ;;
 
     system_ext/etc/permissions/qti_libpermissions.xml)
