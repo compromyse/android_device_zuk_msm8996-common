@@ -398,6 +398,10 @@ PRODUCT_SYSTEM_VERITY_PARTITION=/dev/block/bootdevice/by-name/system
 PRODUCT_VENDOR_VERITY_PARTITION=/dev/block/bootdevice/by-name/factory
 $(call inherit-product, build/target/product/verity.mk)
 
+# Vibrator
+PRODUCT_PACKAGES += \
+    vendor.qti.hardware.vibrator.service
+
 # WiFi
 PRODUCT_PACKAGES += \
     android.hardware.wifi-service \
