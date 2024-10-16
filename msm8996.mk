@@ -382,7 +382,7 @@ $(call inherit-product, build/target/product/verity.mk)
 
 # WiFi
 PRODUCT_PACKAGES += \
-    android.hardware.wifi@1.0-service \
+    android.hardware.wifi-service \
     libwpa_client \
     hostapd \
     WifiOverlay \
