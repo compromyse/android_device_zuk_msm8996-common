@@ -173,7 +173,7 @@ PRODUCT_PACKAGES += \
     disable_configstore
 
 # ConfigPanel
-#PRODUCT_PACKAGES += \
+PRODUCT_PACKAGES += \
     ConfigPanel
 
 # Display
