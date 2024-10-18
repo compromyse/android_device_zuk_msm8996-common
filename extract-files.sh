@@ -82,6 +82,7 @@ function blob_fixup() {
         sed -i "s|/data/misc/camera|/data/vendor/qcam|g" "${2}"
         "${PATCHELF}" --remove-needed libandroid.so "${2}"
         "${PATCHELF}" --remove-needed libgui.so "${2}"
+        "${PATCHELF}" --remove-needed libfui.so "${2}"
         ;;
 
     # Patch blobs for VNDK
@@ -134,6 +135,14 @@ function blob_fixup() {
         sed -i "s/name=\"android.hidl.manager-V1.0-java/name=\"android.hidl.manager@1.0-java/g" "${2}"
         ;;
 
+    vendor/lib64/libqmi_csi.so|vendor/lib/libqmi_csi.so)
+        "${PATCHELF}" --remove-needed libsmemlog.so "${2}"
+        ;;
+
+    vendor/lib64/libwvhidl.so|vendor/lib64/libsettings.so)
+        "${PATCHELF}" --replace-needed "libprotobuf-cpp-full-v28.so" "libprotobuf-cpp-full.so" "${2}"
+        ;;
+
     # Rename vulkan.msm8953
     vendor/lib/hw/vulkan.msm8996.so | vendor/lib64/hw/vulkan.msm8996.so)
         "${PATCHELF}" --set-soname "vulkan.msm8996.so" "${2}"
@@ -141,6 +150,7 @@ function blob_fixup() {
     esac
 
     grep "libhidlbase.so" "${1}" && "${PATCHELF}" --replace-needed "libhidlbase.so" "libhidlbase-v32.so" "${1}"
+
 }
 
 if [ -z "${ONLY_TARGET}" ]; then
