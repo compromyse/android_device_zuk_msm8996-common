@@ -71,6 +71,10 @@ fi
 function blob_fixup() {
     case "${1}" in
 
+    vendor/bin/pm-service)
+      "${PATCHELF}" --add-needed libutils_shim.so "${2}"
+      ;;
+
     system_ext/lib64/libdpmframework.so)
         for LIBDPM_SHIM in $(grep -L "libcutils_shim.so" "${2}"); do
             "${PATCHELF}" --add-needed "libcutils_shim.so" "$LIBDPM_SHIM"
