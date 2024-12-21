@@ -193,9 +193,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     ZukDoze
 
-# DPM
+# Shims
 PRODUCT_PACKAGES += \
-    libcutils_shim
+    libcutils_shim \
+    libutils_shim.vendor
 
 # DRM
 PRODUCT_PACKAGES += \
